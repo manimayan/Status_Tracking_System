@@ -1,9 +1,8 @@
 ## About The Project
 
-### status_tracking_system - Project & Team Management Application
-
-Status Tracking System helps to assign and track the status of the incident tickets assigned to a resource.  It maintains the history of tickets assigned to a resource and helps users to prioritize the tickets a[sts_presentation.pptx](https://github.com/manimayan/Status_Tracking_System/files/8457469/sts_presentation.pptx)
-ssigned to them. Also, the system consists of many useful functions and features which make handling of tickets easy. 
+### [Status_Tracking_System](https://github.com/manimayan/Status_Tracking_System/files/8457469/sts_presentation.pptx)
+### - Project & Team Management Application
+Status Tracking System helps to assign and track the status of the incident tickets assigned to a resource.  It maintains the history of tickets assigned to a resource and helps users to prioritize the tickets assigned to them. Also, the system consists of many useful functions and features which make handling of tickets easy. 
 
 This system increases productivity by enabling better co-ordination between teams. It helps on minimizing time wasted on tracking issues. Also, improves quality by ensuring all tickets are recorded and handles the end to end progress. Gives users the freedom to access from mobiles or PC. 
 
