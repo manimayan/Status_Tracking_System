@@ -1,0 +1,162 @@
+<div class="container-fluid">
+
+	<div class="container ">
+		<div class="rowAlign">
+			<div class="panel panel-warning">
+							<div class="panel-heading">
+			
+					<h3 class="panel-title text-center">
+						<b> Report Summary </b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<form #f="ngForm">
+					<p-messages [(value)]="msgs"></p-messages>
+						<div class="row">
+						<div class="form-group col-lg-2">
+							<label><b>EmployeeName:</b></label><br> 
+							 <p-dropdown [options]="empList" name="employeeName"  [(ngModel)]="employeeName" [style]="{'width':'100%'}" >
+								</p-dropdown>	
+								
+						</div>
+						
+						<div class="form-group col-lg-2">
+							<label><b>Application:</b></label><br> 
+							 <p-dropdown [options]="appList" name="applicationName"  [(ngModel)]="applicationName" [style]="{'width':'100%'}" >
+								</p-dropdown>	
+								
+						</div>
+						
+						<div class="form-group col-lg-2">
+							<label><b>Activity:</b></label><br> 
+							 <p-dropdown [options]="act" name="activity"  [(ngModel)]="activity" [style]="{'width':'100%'}" >
+							 </p-dropdown> 
+						</div>
+						
+						<div class="form-group col-lg-2">
+							<label><b>Status:</b></label><br> 
+							  <p-dropdown [options]="statuses" field="status" name="status" [(ngModel)]="status"  [style]="{'width':'100%'}" >
+							  </p-dropdown>  
+						</div>
+						
+						<div class="form-group col-lg-2">
+							<label><b>Release Ticket:</b></label><br> 
+							  <p-dropdown [options]="release" field="releaseTicket" name="releaseTicket"  [(ngModel)]="releaseTicket" [style]="{'width':'100%'}" >
+							  </p-dropdown>  
+						</div>
+			
+						</div>
+
+					<div class="row">
+						<label class="control-label"></label>
+						<b class="datelabel">Start Date:</b>
+						
+
+						
+							<div class="ui-g ui-fluid">		
+								
+								<div class="form-group col-lg-2">
+        							<b>From</b>
+        <p-calendar name="startdateFrom" [(ngModel)]="startdateFrom" [showIcon]="true"></p-calendar>
+    </div>
+    
+    
+    
+     
+    <div class="form-group col-lg-2">
+        <b>To</b>
+        <p-calendar name="startdateTo" [(ngModel)]="startdateTo" [showIcon]="true"></p-calendar>
+    </div>
+   
+   
+   
+					
+							
+							<div class="form-group col-lg-2">
+							<label
+								><b>Ticket Type:</b></label><br> 
+							  <p-dropdown [options]="type" field="ticket_type" name="ticketType"  [(ngModel)]="ticketType"  [style]="{'width':'100%'}" >
+							  </p-dropdown>  
+						</div>
+							
+							<div class="form-group col-lg-2">
+								<label><b> Tester:</b></label><br> 
+								<p-dropdown   [options]="display" field="tester"  name="tester"  [(ngModel)]="tester" [style]="{'width':'100%'}" >
+								</p-dropdown>
+							</div>
+							
+						</div>	
+						 </div>
+											
+						<div class="row">
+						<label  class="control-label"></label><b class="datelabel">  End Date:</b><br> 
+						
+						
+							
+							<div class="ui-g ui-fluid">
+							<div class="form-group col-lg-2">
+        <b>From</b>
+        <p-calendar name="enddateFrom" [(ngModel)]="enddateFrom" [showIcon]="true"></p-calendar>
+    </div>
+    <div class="form-group col-lg-2">
+      <b>To</b>
+        <p-calendar name="enddateTo" [(ngModel)]="enddateTo" [showIcon]="true"></p-calendar>
+    </div>
+						</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-lg-6">
+								<br>
+								<button type="submit" class="btn btn-success" (click)="dayticketdetails(f.value);Onclick($event)">Submit</button>
+								&nbsp;&nbsp;&nbsp; <input type="reset" value="Clear"
+									
+									class="btn btn-warning" />
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		
+	
+			<div *ngIf="showReport" class="panel panel-warning">
+				<div class="panel-heading">
+				<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Report Summary </b>
+					</h3>
+				</div>
+				<div class="panel-body">
+				<div>
+				<button type="excel" class="btn btn-success"  (click)="dt.exportCSV()">Excel</button>
+				</div><br>
+					<p-dataTable  #dt [value]="dayticket" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[loading]="loading" exportFilename="ReportSummary" [style]="{'overflow': 'visible'}">
+				<!-- <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column> -->
+				<p-column header="Employee Name" field="employeeName" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column header="Ticket Id" field="ticketId" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Ticket Type" field="ticketType" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Description" field="ticketDescription" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Application" field="applicationName" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Priority" field="priority" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Activity" field="activity" [filter]="true" filterMatchMode="contains" [sortable]="true" ></p-column>
+				<p-column  header="Status" field="status" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Tester" field="tester" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Dev Comment" field="devComment" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Start Date" field="startDate" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Updated On" field="updatedOn" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="End Date" field="endDate" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Remedy" field="remedy" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Documentation" field="documentationDescription" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+			
+			</p-dataTable>
+				</div>
+			</div>
+		
+	</div>
+</div>

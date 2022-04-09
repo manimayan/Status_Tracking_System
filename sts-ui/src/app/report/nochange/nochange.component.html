@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+	<div class="container">
+
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+				<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b>List of tickets in progress for last 5 days</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+				<div class="panel-heading">
+				 <h3> 
+      </h3> 
+			
+			
+<button class="btn btn-success report" style="margin-left: -14px;"  type="excel" (click)="table.exportCSV()"> Excel</button>
+    
+    <!-- <button type="excel"  (click)="dt.exportCSV()">Excel</button>  -->
+      <!-- <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button> -->
+   </div> 
+				<input type="hidden" name="employeename" id="employeename" value="" />
+						<input type="hidden" name="ticketid" id="ticketid" value="" /> <input
+							type="hidden" name="tickettype" id="tickettype" value="" /> <input
+							type="hidden" name="desc" id="desc" value="" /> <input
+							type="hidden" name="application" id="application" value="" /> <input
+							type="hidden" name="priority" id="priority" value="" /> <input
+							type="hidden" name="activity" id="activity" value="" /> <input
+							type="hidden" name="status" id="status" value="" />  <input
+							type="hidden" name="dev Comment" id="dev Comment" value="" />
+	<div>
+			<p-dataTable  #table [value]="nochangeList" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[loading]="loading" id="datatable" [style]="{'overflow': 'visible'}">
+				<p-header>
+       <div style="text-align:left">
+            <p-multiSelect [options]="cities" [(ngModel)]="selectedCities" (onChange)="selecteddisplay()"></p-multiSelect>
+        </div>
+    </p-header>
+   <p-column *ngFor="let col of selectedVisibleClaimColumn"  [field]="col.field" [header]="col.header" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>   
+				<!-- <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column> -->
+				<!-- <p-column field="ticketId" header="Ticket Id"  [filter]="true" [sortable]="true"></p-column>
+				<p-column field="emp_name" header="Employee Name"   [filter]="true"[sortable]="true"></p-column>
+				<p-column field="ticketType"  header="Ticket Type"  [filter]="true"[sortable]="true"></p-column>
+				<p-column field="ticketDescription"  header="Description"  [filter]="true"[sortable]="true"></p-column>
+				<p-column field="applicationId"  header="Application"  [filter]="true"[sortable]="true"></p-column>
+				<p-column field="priority"  header="Priority"  [filter]="true"[sortable]="true"></p-column>
+				<p-column field="activity"  header="Activity" filterMatchMode="startsWith" [style]="{'width':'180px','overflow':'visible'}"  [filter]="true"[sortable]="true"></p-column>
+				<p-column field="status"  header="Status"  [filter]="true"[sortable]="true"></p-column>
+				
+				<p-column field="updatedOn"  header="Updated On"  [filter]="true"></p-column>
+				<p-column field="commentDescription"  header="Comments" [style]="{'width':'10%'}"  [filter]="true"></p-column> -->
+			
+			</p-dataTable>
+		
+				</div>
+			</div>
+		</div>
+	</div>
+			</div>
+	
+		
+	

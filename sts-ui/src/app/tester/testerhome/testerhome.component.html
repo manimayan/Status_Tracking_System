@@ -1,0 +1,40 @@
+  <div class="container-fluid">
+	<div  class="container" >
+	
+			<div class="panel panel-warning" >
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Ticket information </b>
+					</h3>
+				</div>
+				
+			<div class="panel-body">
+	
+			<p-dataTable [value]="homeList" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[style]="{'margin-top':'25px'}" [loading]="loading" [style]="{'overflow': 'visible'}" >
+			
+				<p-column header="Ticket Id" [sortable]="true" field="ticketId"  [filter]="true" ></p-column>
+				<p-column  header="Description" [sortable]="true" field="ticketDescription"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Application"  [sortable]="true" field="applicationName"  [filter]="true" filterMatchMode="contains" ></p-column>
+				<p-column  header="Activity"  [sortable]="true" field="activity"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header=" Status"  [sortable]="true" field="status"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="TesterComments"  [sortable]="true" field="testComment"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Developer"  [sortable]="true" field="developerName"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Start Date" [sortable]="true" field="startDate"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column header="Update">
+        <ng-template let-row let-data="rowData" pTemplate="body">
+            <button type="submit" class="btn btn-success"  (click)="updatecomment(data)">Update</button>
+        </ng-template>
+    </p-column>  
+			</p-dataTable>
+		</div>
+				
+			
+		</div>
+	</div>
+	</div>

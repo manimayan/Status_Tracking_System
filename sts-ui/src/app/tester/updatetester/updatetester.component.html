@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="container">
+   
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                 <h4 class="panel-title text-right">Ticket dump on <b>[null]</b> by <b>[null]</b></h4>
+                 <h3 class="panel-title text-center"><b> Update Ticket Status </b></h3>
+            </div>
+    <div class="panel-body">
+        <form class="form-group" name="updateticket" id="updateticket"  #f="ngForm" >
+                 <div align="Center"> <span class="message" style="color: red"></span> </div>
+                 <div align="Center"><span class="message" style="color: red"></span> </div>
+                 <div class="row">
+             <div class="form-group col-lg-3">
+                 <b>Ticket Id</b> <label for="ticketId" class="control-label">: </label> 
+		         <input type="text" class="form-control" name="ticketId" [(ngModel)]="ticketId"  id="select" value="" readonly>
+						<!-- <input type="text" class="form-control" name="ticketId" [(ngModel)]="ticketId"  id="select" value=""  readonly > -->
+             </div>
+             <div class="form-group col-lg-3">
+                 <b>Ticket Type</b> <label   for="ticketType" class="control-label">: </label> 
+	           	 <input type="text" class="form-control" name="ticketType" [(ngModel)]="ticketType"  id="select1" value="" readonly>
+	             <!-- <p-dropdown [options]="type" field="ticketType" name="ticketType" [(ngModel)]="ticketType" id="name1" value=" " #name1="ngModel" readonly [style]="{'width':'100%'}" ></p-dropdown> --> 
+  
+             </div>
+             <div class="form-group col-lg-3">
+                 <b>Description</b> <label    for="ticketDescription" class="control-label">: </label> 
+	             <input type="text"  class="form-control" name="ticketDescription" [(ngModel)]="ticketDescription" id="select2"  value=""  readonly>
+              </div>
+            
+              
+              <div class="form-group col-lg-3">
+                 <b>Application</b> <label for="application" class="control-label">
+                 <sup style="color: red;">*</sup>: </label> 
+		         <input type="text" class="form-control" name="applicationName" [(ngModel)]="applicationName"   value="" readonly>
+			</div>
+			
+              </div>
+              
+              <div class="row">
+              <div class="form-group col-lg-3">
+               
+                <b>Priority</b> <label required for="priority" class="control-label"><sup style="color: red;">*</sup>: </label> 
+		         <input type="text" class="form-control" name="priority" [(ngModel)]="priority"   value="" readonly>
+				
+<!--           
+     <p-dropdown [options]="prio" field="priority" name="priority" [(ngModel)]="priority" placeholder="Select the Priority" [style]="{'width':'100%'}" ></p-dropdown> 
+ -->            </div>
+            <div class="form-group col-lg-3">
+               <b>Activity</b> <label for="activity" class="control-label"><sup style="color: red;">*</sup>:</label> 
+                   
+               <p-dropdown required [options]="act" field="activity" name="activity" [(ngModel)]="activity" placeholder="Select the Activity" [style]="{'width':'100%'}" ></p-dropdown> 
+                      
+            </div>
+             <div class="form-group col-lg-3">
+             <b>Status</b> <label for="status" class="control-label"><sup style="color: red;">*</sup>:</label>
+             <p-dropdown required [options]="stat" field="status" name="status" [(ngModel)]="status" placeholder="Select the Status" [style]="{'width':'100%'}" ></p-dropdown> 
+             </div> 
+          
+          <div class="form-group col-lg-3">
+                <b>Tester Comment</b> <label for="testComment"><sup style="color: red;">*</sup>: </label>
+                <textarea class="form-control scroll" name="testComment" id="select8" [(ngModel)]="testComment" maxlength="150" required></textarea>
+                <div id="textarea_feedback"></div>
+           </div> 
+           </div>
+           
+           <div class="row">
+           
+           <div class="form-group col-lg-3">
+               <b> Worked Today</b> <label for="radio"><b><sup style="color: red;">*</sup>: </b></label> <br>
+               <label class="radio-inline"> <input type="radio" name="workedOnToday" id="work" value="Yes" [(ngModel)]="Yes" required>Yes</label>
+               <label class="radio-inline"> <input type="radio" name="workedOnToday" id="work" value="No" [(ngModel)]="No"  onclick="return Validate()" required>No</label> 
+               <label for="workedOnToday" class="error" style="display: none;">*Please pick an option above</label>
+           </div>
+           <div class="form-group col-lg-6">
+           <div align="center"></div>
+               <br>
+               <button type="submit" class="btn btn-success" (click)="savetesterdetails(f.value) "[disabled]="!f.form.valid">Save</button>&nbsp;&nbsp;&nbsp; 
+                <input type="button" value="Clear" name="clear"class="btn btn-warning"(click)="clear()" />
+          
+
+       
+    </div> </div>
+          
+        </form>
+     </div>
+   </div>
+  </div>
+ </div>

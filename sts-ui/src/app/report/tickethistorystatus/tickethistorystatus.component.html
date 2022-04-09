@@ -1,0 +1,114 @@
+<div class="container-fluid">
+		 
+ <div class="container">
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+				    <h3 class="panel-title text-center">
+						<b> NOTE:Please enter ticket id or resource </b>
+					</h3>
+				</div>
+			<div class="panel-body">
+
+         <form #f="ngForm">
+			<div class="form-group col-lg-6 col-md-6">
+    				<p-messages [(value)]="msgs"></p-messages> 
+
+      <label for="tickid">TicketId:</label>
+				 <p-dropdown  [options]="result1" [(ngModel)]="tickId" id="ticketId" #ticketId="ngModel"  name="tickId" filter="true"  [style]="{'width':'100%'}"   ></p-dropdown>	
+    </div>
+  
+	<div class="form-group col-lg-6  col-md-6" align-text="center"> 
+							<label for="res">Resources </label>
+							 <p-dropdown  [options]="result" [(ngModel)]="ename" name="ename"  id="employeeName" #employeeName="ngModel"  [style]="{'width':'100%'}"  ></p-dropdown>
+						</div> 
+   
+     <div class="form-group col-lg-6 col-md-6">
+							<label
+								for="days"  class="control-label">Days <sup	style= "color: red;">*</sup>:
+							</label> <select class="form-control" name="days" id="dys"  [(ngModel)]="days"  value="" #dys="ngModel" required>
+								<option value=""></option>
+								<option value="1">1</option>
+								<option value="5">5</option>
+								<option value="10">10</option>
+								<option value="15">15</option>
+								<option value="30">30</option>
+								<option value="60">60</option>
+								<option value="90">90</option>
+							</select>
+                           
+			</div>  	
+	<div class="form-group col-lg-6">
+							<div align="center"></div>
+							<br>
+							<button type="submit" class="btn btn-success" [disabled]="!f.form.valid" (click)="submit(tickId,ename,days);f.reset();Onclick($event)" routerLinkActive="active">Report</button>
+							&nbsp;&nbsp;&nbsp; <input type="reset" value="Clear" class="btn btn-warning" (click)="clear()"/>
+						</div>
+				</form>
+		</div>
+		</div>
+		</div>
+	
+		
+						
+			
+
+  
+	<div *ngIf="showReport" class="container">
+
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+				 <h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b>Ticket History Report</b>
+					</h3>
+				</div>
+				
+     <div class="panel-body">
+				<div class="panel-heading">
+   </div> 
+				<input type="hidden" name="employeeName" id="employeeName" value="" />
+						<input type="hidden" name="ticketId" id="ticketId" value="" /> <input
+							type="hidden" name="ticketType" id="ticketType" value="" /> <input
+							type="hidden" name="desc" id="desc" value="" /> <input
+							type="hidden" name="application" id="application" value="" /> <input
+							type="hidden" name="priority" id="priority" value="" /> <input
+							type="hidden" name="activity" id="activity" value="" /> <input
+							type="hidden" name="status" id="status" value="" />  <input
+							type="hidden" name="dev Comment" id="dev Comment" value="" /> 
+	<div>
+			 <p-dataTable   #tables [value]="tickethistory" [rows]="10" [paginator]="true" exportFilename="TicketHistoryStatus" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[loading]="loading" [style]="{'overflow': 'visible'}">
+				 
+			
+				
+				
+				
+			
+				<p-column header="Employee Name" field="employeeName" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column header="Ticket Id" field="ticketId" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Ticket Type" field="ticketType" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+			
+		    	<p-column  header="Date" field="date" [style]="{'width':'10%'}" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="Status" field="status" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  header="dev Comment" field="devComment" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+			
+			</p-dataTable>
+			
+		
+ 
+			
+		</div>
+		</div>
+				
+				</div>
+			</div>
+		</div>
+	

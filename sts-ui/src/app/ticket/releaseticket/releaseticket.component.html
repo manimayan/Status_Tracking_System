@@ -1,0 +1,88 @@
+<div class="container-fluid">
+
+     <div class="container">
+
+             <div class="panel panel-warning">
+
+                           <div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+                                  <h3 class="panel-title text-center">
+
+                                         <b> Release Ticket </b>
+
+                                  </h3>
+
+                           </div>
+
+                 <button class="btn btn-success report" type="excel" (click)="table.exportCSV()">Excel</button> 
+
+                                 
+
+              <div class="panel-body">
+
+                     <p-dataTable  #table  [value]="empList" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true"
+
+                           [headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+
+                           [loading]="loading" exportFilename="ReleaseTicket" [style]="{'overflow': 'visible'}">
+
+                          
+
+                           <p-header>
+
+                           <div style="text-align:left">
+
+           <p-multiSelect [options]="cities" [(ngModel)]="selectedCities" (onChange)="selecteddisplay()"></p-multiSelect>
+
+        </div>
+
+    </p-header>
+
+   
+
+  <p-column *ngFor="let col of selectedVisibleClaimColumn" [field]="col.field" [header]="col.header"[filter]="true" filterMatchMode="contains" [sortable]="true" ></p-column>
+
+                            <p-column [style]="{'width':'0px'}" selectionMode="multiple"></p-column>
+
+                           <<!-- p-column field= "ticketId" name="ticketId"  header="Ticket Id" [filter]="true" [sortable]="true" ></p-column>
+
+                           <p-column  field= "ticketDescription"header="Description" [filter]="true" [sortable]="true"></p-column>
+
+                           <p-column  field= "applicationName" header="Application" [filter]="true" [sortable]="true"></p-column>
+
+                           <p-column field= "employeeName"  header="Resource" [filter]="true" [sortable]="true"></p-column>
+
+                           <p-column  field= "releaseTicket" name="releaseTicket" header="Release" [filter]="true" [sortable]="true" filterMatchMode="startsWith" [style]="{'width':'180px','overflow':'visible'}"></p-column>
+
+                     <p-column >
+
+         -->
+
+            
+
+         <p-column field="button"  header="Release Ticket" [exportable]="false">
+
+        
+
+        <ng-template let-col let-data="rowData" pTemplate="body">
+
+            <button style="position:relative; left: 54px;" type="button" class="btn btn-success"  (click)="update(data)">Release</button>
+
+        </ng-template>
+
+    </p-column>
+
+                           </p-dataTable>
+
+              </div>                                                
+
+                     </div>      
+
+                     </div>
+
+                    
+
+              </div>

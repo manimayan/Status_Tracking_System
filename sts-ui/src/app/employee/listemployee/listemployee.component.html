@@ -1,0 +1,32 @@
+<div style="width: 100%" class="container">
+
+	<h3>
+	<div class="col-lg-2 col-md-2 col-xs-2">
+		<b> Employee List</b>
+	</div>
+	</h3>
+	<div class="col-lg-10">
+		<div style="float:right">
+		<button type="button" class="button" [routerLink]="['/employee/create-employee']"> 
+			<label class="label"><b>Add Employee</b></label>
+		</button>
+		</div>
+	</div>
+
+
+	<br>
+	<div id="viewuser">
+		<p-dataTable [value]="empList" [rows]="10" [paginator]="true"
+		 [responsive]="true"
+			dragdrop="true" [headerCheckboxToggleAllPages]="true" dataKey="id"
+			[rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true"
+			[reorderableColumns]="true" [style]="{'margin-top':'25px'}" [loading]="loading"> 
+		<p-column field="empId" header="Employee Id" [filter]="true" filterMatchMode="contains"
+			[sortable]="true"></p-column>
+		 <p-column field="empName" header=" Employee Name"
+			[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+	<!-- 	 <p-column field="emailId" header="Email Id"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column> -->
+		</p-dataTable>
+	</div>
+</div>

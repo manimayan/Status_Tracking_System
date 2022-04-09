@@ -1,0 +1,94 @@
+<div class="container-fluid">
+<div class="container">
+
+	 <div class="panel panel-warning">
+		  <div class="panel-heading">
+			   <h3 class="panel-title text-center"><b> Add Vacation </b></h3>
+
+		  </div>
+		  <div class="panel-body">
+<div class="ui-g-12 ui-md-12 no-padding">
+<p-messages [(value)]="msgs"></p-messages>
+
+<form #f ="ngForm" >
+
+<br>
+
+<div class="ui-g">
+     <div class="col-xs-3 col-sm-4 col-md-3 col-lg-3">
+          <label for="id">Enter Vacation :</label>
+     </div>
+     
+     <div class=" col-xs-9 col-sm-4 col-md-3 col-lg-3">
+          <div class="ui-g ui-fluid">
+               <div class="ui-g-12">
+                    <label>From</label>
+                    <p-calendar name="vacationDateFrom" [(ngModel)]="vacationDateFrom" (ngModelChange)="onChange($event)" 
+                    dateFormat="dd/mm/yy" [disabledDates]="invalidDates" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [showIcon]="true" [disabledDates]="invalidDates" [disabledDays]="[0,6]" 
+                    readonlyInput="true">
+                    </p-calendar>
+              </div>
+         </div>
+  
+     <div class="ui-g ui-fluid">
+          <div class="ui-g-12">
+               <label>To</label>
+               <p-calendar name="vacationDateTo" [(ngModel)]="vacationDateTo" (ngModelChange)="onChange($event)" 
+               dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" [showIcon]="true" [disabledDates]="invalidDates" [disabledDays]="[0,6]"  
+               readonlyInput="true">
+               </p-calendar>
+	     </div>
+	</div>
+	 
+ </div>
+</div>
+<br>
+<br>
+<div class="ui-g">
+     <div class="col-xs-3 col-sm-4 col-md-3 col-lg-3">
+          <label for="VacationType">Enter the Type of Vacation :</label>
+     </div>
+
+<div class="col-xs-9 col-sm-4 col-md-3 col-lg-3">
+     <select  class="form-control" [(ngModel)]="vacationType" name="vacationType" (ngModelChange)="onChange($event)" >
+              <option value="" [selected] [disabled]> Enter the type of Vacation </option>
+              <option *ngFor="let vacationType of vacationTypes" [ngValue]="vacationType.value">{{vacationType.display}}
+              </option>
+    </select>
+</div>
+</div>
+    <br> 
+    <br> 
+
+<div class="ui-g">
+     <div class="col-xs-3 col-sm-4 col-md-3 col-lg-3">
+          <label for="vacationComments">Enter the Vacation Comments :</label>
+     </div>
+
+<div class="col-xs-9 col-sm-4 col-md-3 col-lg-3">
+     <input type="textarea"  class="form-control" [(ngModel)]="vacationComments" (focus)="commentmsg($eve)"  (focusout)="commentnomsg($eve)" placeholder="Enter comments" name="vacationComments" (ngModelChange)="onChange($event)" >
+</div>
+<label class="comments">{{comments}}</label>
+</div>
+
+<br>
+<br>
+<br>
+
+
+				<div class="col-sm-12" align="center">
+					<button type="submit" class="btn btn-success" [disabled]="isVacation" (click)="saveVacation(f.value); f.reset()">
+					Submit
+					</button>
+					
+				</div>
+		
+
+
+
+
+	</form>
+</div>
+</div>
+</div>
+</div>

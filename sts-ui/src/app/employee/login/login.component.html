@@ -1,0 +1,64 @@
+<body class="background">
+	<div class="row">
+		<form #f="ngForm" (keyup.enter)="login(f.value)">
+
+			<div class="panel-warning">
+				<div class="panel-heading  background-occupy">
+					<div class="row">
+						<div class="col-lg-4"></div>
+						<div class="col-lg-4 menu-pad">
+							<h3 id="o" class="panel-title">Login Here</h3>
+							<div class="panel-body panel-custom">
+								<p-messages [(value)]="msgs"></p-messages>
+								<div class="form-group has-feedback">
+									<label style="margin-top: 10px;" for="emp_id">Employee_ID<sup
+										style="color: red;">*</sup>:
+									</label> <i class=" form-control-feedback"></i> <input type="text"
+										autocomplete="off" class="form-control" name="employeeId"
+										id="empid" required pattern="[a-zA-Z0-9]+" maxlength="8"
+										[(ngModel)]="employeeId" placeholder="Enter Employee_ID"
+										#empid="ngModel" onCopy="return false" onCut="return false"
+										onPaste="return false" />
+									<div [hidden]="!empid.hasError('pattern')">
+										<small><b>Enter a valid EmployeeId</b></small>
+									</div>
+
+								</div>
+								<div class="form-group has-feedback">
+									<label style="margin-top: 10px;" for="pwd">Password<sup
+										style="color: red;">*</sup>:
+									</label> <i class=" form-control-feedback"></i> <input type="password"
+										class="form-control" id="pwd" name="password"
+										[(ngModel)]="password" placeholder="Enter password"
+										#pass="ngModel" required onCopy="return false"
+										onCut="return false" onPaste="return false" />
+
+								</div>
+								<div>
+									<a [routerLink]="['/employee/resetpasswordhome']">Forgot
+										Password</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								</div>
+								<br>
+								<div class="btnalign">
+									<button type="button" style="margin-left: 70px;"
+										class="btn btn-success" [disabled]="!f.form.valid"
+										(click)="login(f.value)">submit</button>
+									<button type="reset" style="margin-left: 8px;" value="Reset"
+										class="btn btn-warninuug" (click)="resetPage()">clear</button>
+								</div>
+
+								<div style="margin-top: 10px;">
+									<a style="float: left;"
+										[routerLink]="['/employee/useremployee']">Sign Up</a> <a
+										style="float: right;" [routerLink]="['/employee/contact']">Contact</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>

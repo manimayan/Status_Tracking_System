@@ -1,0 +1,46 @@
+<div class="container-fluid">
+<div class="container">
+<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> My Closed Tickets </b>
+					</h3>
+				</div>
+				<div class="panel-body">
+				
+		<div id="viewclosed">
+		<p-dataTable [value]="closedList" [rows]="10" [paginator]="true"
+		 [responsive]="true"
+			dragdrop="true" [headerCheckboxToggleAllPages]="true" dataKey="id"
+			[rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true"
+			[reorderableColumns]="true" [style]="{'overflow': 'visible'}" [loading]="loading"> 
+		<p-column field="ticketId" header="Ticket Id" [filter]="true" filterMatchMode="contains"
+			[sortable]="true"></p-column>
+		 <p-column field="ticketType" header="Ticket Type"
+			[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 <p-column field="descrip" header="Description"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="app" header="Application"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="status" header="Status"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="sdate" header="StartDate"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="edate" header="EndDate"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="remedy" header="Remedy"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="doc" header="Documentation"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		</p-dataTable>
+	</div>
+
+				</div>
+			
+		</div>
+	</div>
+	</div>

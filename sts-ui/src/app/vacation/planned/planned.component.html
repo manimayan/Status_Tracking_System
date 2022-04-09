@@ -1,0 +1,24 @@
+<div class="container-fluid">
+<div class="container">
+	 <div class="panel panel-warning">
+		  <div class="panel-heading">
+			   <h3 class="panel-title text-center"><b> Planned Vacation Report </b></h3>
+			
+		  </div>
+		  <div class="report">
+		  <button class="btn btn-success"   type="excel" (click)="dt.exportCSV()">Download Planned Vacation Report</button> 
+		  </div>
+<p-schedule [events]="events" [fixedWeekCount]="false" [weekends]="false" [height]="700" [header]="headerConfig" [contentHeight]="500"></p-schedule>
+
+<div class="name">
+		<p-dataTable #dt [value]="vaclist"  exportFilename="Planned Vacation Report">
+		<p-column field="employeeName" header="Employee Name"></p-column>
+		<p-column field="vacationDateFrom" header="Vacation From"></p-column>
+		<p-column field="vacationDateTo" header="vacation To"></p-column>
+		<p-column field="vacationType" header="vacation Type"></p-column>
+		<p-column field="vacationComments" header="vacation Comments"></p-column>
+		</p-dataTable>
+</div>
+</div>
+</div>
+</div>

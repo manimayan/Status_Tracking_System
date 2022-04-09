@@ -1,0 +1,11 @@
+{
+  "apiProperties": [
+    {
+      "uri": "http://localhost:9090/sts-core",
+      "accessToken": "coreTocken",
+      "key": "sts.core.api"
+    }
+  ],
+  "contentRoot": "test_content",
+  "cwsLogoutUrl": "https://login-test"
+}

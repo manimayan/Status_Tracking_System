@@ -1,0 +1,41 @@
+<div class="container-fluid">
+	<div class="container">
+	
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Assign Ticket </b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					 <p-messages [(value)]="msgs"></p-messages>	 
+					<div>
+			    <p-dataTable #dt [value]="ticketList" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true" [style]="{'overflow': 'visible'}" 
+				[loading]="loading" [style]="{'overflow': 'visible'}">
+				    <p-column field="ticketId" header="TicketId" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				    <p-column field="ticketDescription" header="TicketDescription" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				    <p-column field="applicationName" header="Application Name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				    <p-column  header="Assign To"  [style]="{'overflow': 'visible'}" >
+		            <ng-template let-assignData="rowData" pTemplate="body"> 
+                    <p-dropdown [options]="result" placeholder="Select a Employee Name" name="employeeId" [(ngModel)]="assignData.employeeId"></p-dropdown>
+                    </ng-template>
+                    </p-column>    
+		            <p-column >
+                <ng-template pTemplate="header">Assign</ng-template>
+                <ng-template let-col let-data="rowData" pTemplate="body"> 
+                <button style="position:relative; left: 54px;" type="button" [disabled]="isVacation" class="form-group btn btn-success col-xs-6 col-md-6 col-centered" (click)="AssignUpdate(data)">Assign</button>
+                </ng-template>
+                </p-column>
+                </p-dataTable>
+		</div>
+
+				</div>
+			
+		</div>
+	</div>
+	</div>

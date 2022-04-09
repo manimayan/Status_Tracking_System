@@ -1,0 +1,56 @@
+<div class="container-fluid">
+	
+
+	<div class="container">
+
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Edit Priority </b>
+					</h3>
+				</div>
+				<div class="panel-body">
+				<div class="panel-heading">
+					<div>
+					
+			<p-dataTable [value]="empList" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[loading]="loading" [style]="{'overflow': 'visible'}">
+				
+				<p-column field="ticketId" header="ticketId" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="ticketType" header="ticketType" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="ticketDescription" header="Description" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="applicationName" header="Application" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="priority" header="Old Priority" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				
+				
+				<p-column header="New_Priority" field="newPriority" [style]="{'overflow':'visible'}"  appendTo="body">
+       <ng-template let-col let-ndata="rowData"  pTemplate="body" >
+        <p-dropdown  [options]="prio" field="newPriority" name="newPriority"  [(ngModel)]="ndata[col.field]"    ></p-dropdown> 
+           
+        </ng-template>
+    </p-column>
+				<p-column >
+        <ng-template pTemplate="header">Update  
+        </ng-template>
+        <ng-template let-row let-data="rowData" pTemplate="body">
+            <button type="button" style="position:relative; left: 35px;" class="btn btn-success"  (click)="update(data)" >Update</button>
+        </ng-template>
+    </p-column> 
+				
+					
+				
+				
+			</p-dataTable>
+		</div>
+        
+</div>
+			</div>
+		</div>
+	</div>
+</div>
+

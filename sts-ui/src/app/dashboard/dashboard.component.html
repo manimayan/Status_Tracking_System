@@ -1,0 +1,51 @@
+
+
+
+<div class="container-fluid background">
+<div class="emp-info">
+<div class="upload-pic"> 
+<div class="pro-pic">
+
+</div>
+<div class="choose-photo">
+<a [routerLink]="['/home']"><button type="button" class="btn-lg btn-info piccustom"><span class="glyphicon glyphicon-home"></span></button></a>
+<button type="button" class="btn btn-info piccustom1">Choose Photo</button>
+</div>
+</div>
+<div class="pro-details">
+<ul class="list-group details change-height">
+  <li class="list-group-item list-group-item info nopadding"><h3>{{employeeName}}</h3></li>
+  <li class="list-group-item list-group-item nopadding"><h4>{{designation}}</h4></li>
+  <li class="list-group-item list-group-item nopadding"><h4>Skills :&nbsp;{{skills}}</h4></li>
+  <li class="list-group-item list-group-item nopadding"><h4><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;{{mailId}}&nbsp;&nbsp; <span class="glyphicon glyphicon-phone-alt"></span>&nbsp;&nbsp;{{contactno}}</h4></li>
+</ul>
+</div>
+</div>
+<div class="graph-info">
+<div class="ticket-info">
+<div class="ticket-header">
+</div>
+<h2 class="middle">Ticket Progress of {{employeeName}}</h2>
+<p-chart type="doughnut" [data]="progress"></p-chart>
+</div>
+<div class="vacation-info">
+<div class="vacation-header">
+</div>
+<h2 class="middle">Vacation Data of {{employeeName}}</h2>
+<p-chart type="bar" [data]="vacation"></p-chart>
+</div>	
+</div>
+</div>
+{{this.progress}}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<div class="container-fluid">
+<div class="container">
+
+	 <div class="panel panel-warning">
+		  <div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Add Tickets </b>
+					</h3>
+				</div>
+	<br>
+				<div class="panel-body"> 
+ 					 <form #f="ngForm"> 
+ 					 <p-messages [(value)]="msgs"></p-messages>	 
+						
+						
+						  <div class="form-group col-lg-4">
+								<div align="center"></div>
+								<label for="ticketId" class="control-label">TicketID<sup
+									style="color: red;">*</sup>:</label>
+								 <input type="text" class="form-control" style="width=370px" name="ticketId" value=" "
+									 [(ngModel)]="ticketId"  autocomplete="off" required >
+	
+							</div>
+
+							<div class="form-group col-lg-4">
+								<div align="center"></div>
+								<label for="ticketDescription" class="control-label" >Description<sup
+									style="color: red;">*</sup>:
+								</label> <input type="text" class="form-control" style="width=370px" name="ticketDescription" 
+									value=" " [(ngModel)]="ticketDescription" autocomplete="off" required>
+									
+							</div>
+
+
+
+							<div class="form-group col-lg-4">
+								<div align="center"></div>
+								<label for="application" class="control-label">Application<sup
+									style="color: red;">*</sup>:
+								</label>
+								 <p-dropdown [options]="app" [(ngModel)]="appId" name="appId" [style]="{'width':'100%'}"  value=" "  required></p-dropdown>
+							
+							</div>
+							
+							
+ 
+							
+							
+							<div class="form-group col-lg-6">
+								<div align="center"></div>
+								<br>
+								<button type="submit" class="btn btn-success" [disabled]="!f.form.valid" (click)="saveAddticket(f.value,appId)">Add</button>
+								&nbsp;&nbsp;&nbsp; <input type="reset" value="Clear" class="btn btn-warning" (click)="clear()"/>
+									
+								
+							</div>
+							
+							
+					
+						
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</div>

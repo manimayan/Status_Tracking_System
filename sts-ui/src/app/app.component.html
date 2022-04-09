@@ -1,0 +1,214 @@
+<div class="container-fluid custom">
+
+<h1 style="text-align: center; color:#fff;">Welcome to Status Tracking System</h1>
+
+<div class="container">
+
+<nav *ngIf="nav.visible" role="navigation" class="navbar navbar-inverse">
+<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle" dropdown-open>
+ <i class="sr-only"></i>
+ <i class="icon-bar"></i>
+ <i class="icon-bar"></i>
+ <i class="icon-bar"></i>
+</button>
+<div id="navbarCollapse" class="collapse navbar-collapse">
+ <ul class="nav navbar-nav" data-hover="dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft" style="padding-left:30px;">
+  <li>
+ <a [routerLink]="['/home']"><span class="glyphicon glyphicon-home"></span><b> {{home}}</b></a>
+</li>
+<li>
+ <a [routerLink]="['/ticket/uploadfile']"><span   class="glyphicon glyphicon-upload"></span> <b> {{uploadfile}} </b></a>
+</li>
+
+ <li class="dropdown" dropdown>
+<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span  class="glyphicon glyphicon-tasks"></span> <b>{{ticket}} </b><span class="caret"></span></a>
+ <ul role="menu" class="dropdown-menu">
+ <li><a [routerLink]="['/ticket/addticket']">{{addtickets}}</a></li>
+ <li class="divider"></li>
+ <li><a [routerLink]="['/ticket/deleteticket']">{{deleteTickets}}</a></li>
+ <li class="divider"></li>
+ <li><a [routerLink]="['/ticket/myclosed']">{{myclosedTickets}}</a></li>
+  <li class="divider"></li>
+  <li><a [routerLink]="['/ticket/allclosed']">{{allClosedTickets}}</a></li>
+  <li class="divider"></li>
+ <li><a [routerLink]="['ticket']">{{assignTickets}}</a></li> 
+ <li class="divider"></li>
+<li><a [routerLink]="['/ticket/reassignticket']">{{reassignTickets}}&nbsp;&nbsp;</a></li>
+ <li class="divider"></li>
+ <li><a [routerLink]="['/ticket/releaseticket']">{{releaseTickets}}&nbsp;&nbsp;</a></li>
+  <li class="divider"></li>
+ <li><a [routerLink]="['/ticket/editpriority']">{{editPriority}}&nbsp;&nbsp;</a></li>
+  </ul>
+  </li>
+  <li class="dropdown" dropdown>
+ <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <b>{{resource}}</b> <span class="caret"></span></a>
+  <ul role="menu" class="dropdown-menu">
+ <li><a [routerLink]="['/employee/createemployee']">{{addResource}}</a></li>
+<li class="divider"></li>
+ <li><a [routerLink]="['/employee/modifyemployee']">{{modifyResource}}</a></li>
+ <li class="divider"></li>
+ <li><a [routerLink]="['/employee/resetquestion']">{{resetquestion}}</a></li>
+ </ul>
+ </li>
+<li class="dropdown" dropdown>
+ <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span  class="glyphicon glyphicon-folder-open"></span> <b>{{report}} </b><span class="caret"></span></a>
+ <ul role="menu" class="dropdown-menu">
+<li><a [routerLink]="['/report/dailystatus']">{{dailyStatusReport}}</a></li>
+<li class="divider"></li>
+ <li><a [routerLink]="['/report/reportsummary']">{{reportSummary}}</a></li>
+ <li class="divider"></li>
+  <li><a [routerLink]="['/report/ticketstatus']">{{ticketStatus}}</a></li>
+ <li class="divider"></li>
+  <li><a [routerLink]="['/report/ticketoftheday']">{{ticketoftheDay}}</a></li>
+  <li class="divider"></li>
+  <li><a [routerLink]="['/report/tickethistory']">{{ticketsHistoryStatus}}</a></li>
+<li class="divider"></li>
+ <li><a [routerLink]="['/report/clarification']">{{clarification}}</a></li>
+ <li class="divider"></li>
+  <li><a [routerLink]="['/report/notreported']">{{notreportedEmployee}}</a></li>
+ <li class="divider"></li>
+ <li><a [routerLink]="['/report/nochange']">{{nochangeinStatus}}</a></li>
+ <li class="divider"></li>
+ <li><a [routerLink]="['/report/timereport']">{{timeReport}}</a></li>
+  <li class="divider"></li>
+ <li><a [routerLink]="['/report/nottimereport']">{{notReportTime}}</a></li>
+ </ul>
+ </li>
+ <li class="dropdown" dropdown>
+  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus"> </i><b> {{vacation}} </b><span class="caret"></span></a>
+ <ul role="menu" class="dropdown-menu">
+<li><a [routerLink]="['/vacation']">{{addVacation}}</a></li>
+   <li class="divider"></li>
+   <li><a [routerLink]="['/vacation/plannedVacation']">{{plannedVacationReport}}</a></li>
+      <li class="divider"></li>
+   <li><a [routerLink]="['/vacation/unplannedVacation']">{{unplannedVacationReport}}</a></li>
+  <li class="divider"></li>
+ <li><a [routerLink]="['/vacation/disable']">{{blockVacation}}</a></li>
+
+</ul>
+ </li>
+ <li class="dropdown" dropdown>
+  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span  class="glyphicon glyphicon-time"></span> <b>{{timing}} </b><span class="caret"></span></a>
+  <ul role="menu" class="dropdown-menu">
+  <li *ngIf= "buttondisabled" id="intime" ><a [routerLink]="['/timing/intime']" >{{inTime}} </a></li>
+  <li id="time"><a [routerLink]="['/timing/outtime']">{{outTime}}</a></li>
+ </ul>
+ </li>
+</ul>
+
+ <ul class="nav navbar-nav navbar-right">
+    <li><a class="custom-dash" [routerLink]="['/dashboard']"><img src="http://placehold.it/35x35" class="pro-pic"></a></li>
+ <li class="dropdown">
+ <a class="dropdown-toggle custom-dashimage" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>{{welcome}} {{Username()}}</b> <span class="caret"></span></a>
+ <ul class="dropdown-menu">
+  <li><a [routerLink]="['/employee/changepassword']"><span class="glyphicon glyphicon-edit"></span>{{changePassword}}</a></li>
+  <li class="divider"></li>
+<li><a [routerLink]="['/employee/logout']" (click)=nav.hide()><span class="glyphicon glyphicon-log-out" ></span>{{logout}}</a></li> 
+
+ </ul>
+ </li>
+</ul>
+ </div>
+</nav>
+
+
+<nav *ngIf="nav.isuser" role="navigation" class="navbar navbar-inverse">
+
+	 <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle" dropdown-open>
+ <i class="sr-only"></i>
+ <i class="icon-bar"></i>
+ <i class="icon-bar"></i>
+ <i class="icon-bar"></i>
+</button>
+<div id="navbarCollapse" class="collapse navbar-collapse">
+ <ul class="nav navbar-nav" data-hover="dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft" style="padding-left:30px;">
+  <li>
+ <a [routerLink]="['/home']"><span class="glyphicon glyphicon-home"></span><b> {{home}}</b></a>
+</li>
+ <li class="dropdown" dropdown>
+<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span  class="glyphicon glyphicon-tasks"></span> <b>{{ticket}} </b><span class="caret"></span></a>
+ <ul role="menu" class="dropdown-menu">
+ <li><a [routerLink]="['/ticket/addticket']">{{addtickets}}</a></li>
+ <li class="divider"></li>
+ <li><a [routerLink]="['/ticket/myclosed']">{{myclosedTickets}}</a></li>
+ <li class="divider"></li>
+ <li><a [routerLink]="['/ticket/editpriority']">{{editPriority}}&nbsp;&nbsp;</a></li>
+  </ul>
+  </li>
+ <li class="dropdown" dropdown>
+  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus"> </i><b> {{vacation}} </b><span class="caret"></span></a>
+ <ul role="menu" class="dropdown-menu">
+<li><a [routerLink]="['/vacation']">{{addVacation}}</a></li> 
+</ul>
+ </li>
+ <li class="dropdown" dropdown>
+  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span  class="glyphicon glyphicon-time"></span> <b>{{timing}} </b><span class="caret"></span></a>
+  <ul role="menu" class="dropdown-menu">
+  <li *ngIf= "buttondisabled" id="intime" ><a [routerLink]="['/timing/intime']" >{{inTime}}</a></li>
+  <li id="time"><a [routerLink]="['/timing/outtime']">{{outTime}}</a></li>
+ </ul>
+ </li>
+</ul>
+ <ul class="nav navbar-nav navbar-right">
+ <li class="dropdown">
+ <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>{{welcome}} {{Username()}}</b> <span class="caret"></span></a>
+ <ul class="dropdown-menu">
+  <li><a [routerLink]="['/employee/changepassword']"><span class="glyphicon glyphicon-edit"></span>{{changePassword}}</a></li>
+  <li class="divider"></li>
+<li><a [routerLink]="['/employee/logout']" (click)=nav.hide()><span class="glyphicon glyphicon-log-out" ></span>{{logout}}</a></li> 
+
+ </ul>
+ </li>
+</ul>
+ </div>
+</nav>
+
+<nav *ngIf="nav.istester" role="navigation" class="navbar navbar-inverse">
+
+	 <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle" dropdown-open>
+ <i class="sr-only"></i>
+ <i class="icon-bar"></i>
+ <i class="icon-bar"></i>
+ <i class="icon-bar"></i>
+</button>
+<div id="navbarCollapse" class="collapse navbar-collapse">
+ <ul class="nav navbar-nav" data-hover="dropdown" data-animations="fadeInDown fadeInRight fadeInUp fadeInLeft" style="padding-left:30px;">
+  <li>
+ <a [routerLink]="['/tester/testerhome']"><span class="glyphicon glyphicon-home"></span><b> {{home}}</b></a>
+</li>
+ <li class="dropdown" dropdown>
+  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bus"> </i><b> {{vacation}} </b><span class="caret"></span></a>
+ <ul role="menu" class="dropdown-menu">
+<li><a [routerLink]="['/vacation']">{{addVacation}}</a></li>
+</ul>
+ </li>
+ <li class="dropdown" dropdown>
+  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span  class="glyphicon glyphicon-time"></span> <b>{{timing}} </b><span class="caret"></span></a>
+  <ul role="menu" class="dropdown-menu">
+  <li *ngIf= "buttondisabled" id="intime" ><a [routerLink]="['/timing/intime']" >{{inTime}}</a></li>
+  <li id="time"><a [routerLink]="['/timing/outtime']">{{outTime}}</a></li>
+ </ul>
+ </li>
+</ul>
+ <ul class="nav navbar-nav navbar-right">
+ <li class="dropdown">
+ <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>{{welcome}} {{Username()}}</b><span class="caret"></span></a>
+ <ul class="dropdown-menu">
+  <li><a [routerLink]="['/employee/changepassword']"><span class="glyphicon glyphicon-edit"></span>{{changePassword}}</a></li>
+  <li class="divider"></li>
+<li><a [routerLink]="['/employee/logout']" (click)=nav.hide()><span class="glyphicon glyphicon-log-out" ></span>{{logout}}</a></li> 
+
+ </ul>
+ </li>
+</ul>
+ </div>
+</nav>
+
+
+</div> 
+</div> 
+
+ <div>
+	<router-outlet></router-outlet>
+</div>  
+

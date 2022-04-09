@@ -1,0 +1,122 @@
+
+<div class="container-fluid" >
+	<div class="container">
+
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+				<h3 class="panel-title text-center">
+						<b> Ticket Clarification </b>
+					</h3>
+				</div>		 
+		 
+		 <div class="panel-body">
+                    <form #f="ngForm"  >
+							<p-messages [(value)]="msgs"></p-messages> 
+			<div class="form-group col-lg-6 col-md-6">
+                 <label for="ticketId">TicketId:</label>
+				 <p-dropdown  [options]="result1" [(ngModel)]="ticketId" value="" filter="true"  [style]="{'width':'100%'}"  name="ticketId" #data required></p-dropdown>{{result1}}	
+            	</div> 
+			
+						
+						<div class="form-group col-lg-6">
+							<div align="center"></div>
+							<br>
+							<button type="submit" class="btn btn-success" (click)="clarfication(f.value);Onclick($event)" routerLinkActive="active"  [disabled]="!f.form.valid">Search</button>
+							&nbsp;&nbsp;&nbsp; <input type="reset" value="Clear"
+								class="btn btn-warning" (click)="clear()" />
+						</div>
+			</form>
+		</div>
+	</div>
+</div>
+			<div class="container" *ngIf="showReport">
+		
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+                 <h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Ticket Details </b>
+					</h3>
+				</div>
+				
+				
+				<div class="panel-body">
+				
+					<div>
+			
+			<p-dataTable  [value]="clari"  [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[loading]="loading" [style]="{'overflow': 'visible'}">
+				<p-column field="ticketId"  header="Ticket Id" [editable]="true" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="ticketType" header="Ticket Type" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="employeeName" header="Employee Name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="ticketDescription" header="Description" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="applicationName" header="Application Name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="status" header="Status" [editable]="true" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  [editable]="true" field="clarificationDescription" [editable]="true">
+				<ng-template pTemplate="header">Supervisor Comment</ng-template>
+				<ng-template pTemplate="body" field="clarificationDescription">
+			    <input type="text" [(ngModel)]="clarificationDescription"  (ngModelChange)="clarificationDesc($event)"  autoResize="autoResize" field="clarificationDescription"  name="clarificationDescription" />				 
+                </ng-template>
+				</p-column>
+				<p-column  header="Update">
+
+				<ng-template let-row let-data="rowData" pTemplate="body">
+					<button type="button" [disabled]="updated"  class="btn btn-success" (click)="update(data.ticketId,clarificationDescription);clari.reset()">Update</button></ng-template>
+				</p-column> 
+			</p-dataTable>
+		
+				</div>	
+				
+				</div>	
+				
+			</div>
+		</div>
+	
+		
+		
+	<div class="container" *ngIf="showReport">
+		
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+            <h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}}</b> 
+						on <b>{{createdOn}}</b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Clarification Details </b>
+					</h3>
+				</div>
+				
+				
+				<div class="panel-body">
+
+					<div>
+			<p-dataTable [value]="clarifyList" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[5,10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[loading]="loading">
+				
+				<p-column field="ticketId" header="Ticket Id" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="ticketType" header="Ticket Type" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="employeeName" header="Employee Name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="ticketDescription" header="Description" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="applicationName" header="Application Name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="status" header="Status" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="clarificationDescription" header="Supervisor Comment" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column header="Response" field="response" [filter]="true" filterMatchMode="contains" [sortable]="true"> </p-column>
+					<p-column  header="Delete">
+
+				<ng-template let-row let-data="rowData" pTemplate="body">
+				
+					<button type="button"  class="btn btn-success" (click)="delete(data.ticketId,data.clarificationDescription)">Delete</button>
+					</ng-template>
+				</p-column> 
+			</p-dataTable>
+				</div>	
+				</div>
+			</div>
+		</div>
+	</div> 

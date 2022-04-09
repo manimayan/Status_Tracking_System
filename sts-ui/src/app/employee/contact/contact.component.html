@@ -1,0 +1,43 @@
+<div class="container-fluid">
+
+	<div class="container">
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+				<h3 class="panel-title text-center">
+					<b> Admin Details </b>
+				</h3>
+			</div>
+			<div class="panel-body">
+				
+				<p> <sup style="color: red; font-size: 15px; ">NOTE: For queries please contact any one of the Admins.</sup> </p>
+				<p-dataTable #report [value]="AdminDetails" [rows]="10"
+						[paginator]="true" 
+						[responsive]="true" dragdrop="true"
+						[headerCheckboxToggleAllPages]="true" dataKey="id"
+						[rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true"
+						[reorderableColumns]="true" [loading]="loading" exportFilename="NotReported" [style]="{'overflow': 'visible'}"> 
+					<p-header>
+					<div style="text-align: left">
+						<p-multiSelect [options]="cities" [(ngModel)]="selectedCities" (onChange)="selecteddisplay()"></p-multiSelect>
+					</div>
+					</p-header> <p-column *ngFor="let col of selectedVisibleClaimColumn" [field]="col.field"
+						[header]="col.header" [filter]="true" filterMatchMode="contains" [sortable]="true">
+						</p-column>
+					</p-dataTable>
+				
+				<br>
+					
+			 <button type="submit" name="submit" class="btn btn-info" [routerLink]="['/employee/login']" value="Logout">Back</button>
+					
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+

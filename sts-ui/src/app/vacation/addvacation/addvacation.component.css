@@ -1,0 +1,50 @@
+.sic
+{
+	margin-top: 30px;
+}
+
+.comments
+{
+	color:grey;
+	font-style:italic;
+	 font-weight: normal;
+}
+
+.vac
+{
+	margin-top: 30px;
+}
+.date-pick
+{	
+position:relative;
+margin-top:30px;	
+}
+
+
+.last
+{
+	    position: absolute;
+    top: 408px;
+    left:80px;
+ 
+}
+.standard2 {
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 60px;
+  background-color: #BFBFBF;
+  opacity: .9;
+}
+.ui-calendar.ui-calendar-w-btn input {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+   
+}
+.no-padding{
+	padding-left: 0px;
+	padding-right: 0px;
+}

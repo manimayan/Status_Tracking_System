@@ -1,0 +1,30 @@
+<div class="container-fluid" >
+	<div class="container">
+		<div class="panel panel-warning">
+				<div class="panel-heading">
+				<h3 class="panel-title text-center">
+						<b> Reset Question </b>
+					</h3>
+				</div>		 
+		 
+		 <div class="panel-body">
+                    <form #f="ngForm"  >
+							<p-messages [(value)]="msgs"></p-messages> 
+			<div class="form-group col-lg-6 col-md-6">
+                 <label for="employeeId">Employee Id/Employee Name:</label>
+				 <p-dropdown  [options]="result1" [(ngModel)]="employeeId" value="" filter="true"  [style]="{'width':'100%'}"  name="employeeId" #data required></p-dropdown>{{result1}}	
+            	</div> 
+			
+						
+						<div class="form-group col-lg-6">
+							<div align="center"></div>
+							<br>
+							<button type="submit" class="btn btn-success" (click)="deleteemployee(f.value)" routerLinkActive="active"  [disabled]="!f.form.valid">Reset</button>
+							&nbsp;&nbsp;&nbsp; <input type="reset" value="Clear"
+								class="btn btn-warning" (click)="clear()" />
+						</div>
+			</form>
+		</div>
+	</div>
+	</div>
+</div>

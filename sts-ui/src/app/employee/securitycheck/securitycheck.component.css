@@ -1,0 +1,8 @@
+.container-fluid{
+position:  relative;
+    top: 45px;
+}
+
+.dsiplay {
+	display:none !important;
+}

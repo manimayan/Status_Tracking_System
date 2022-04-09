@@ -1,0 +1,95 @@
+<div class="container-fluid">
+<div class="container">
+	 <div class="panel panel-warning">
+		  <div class="panel-heading"></div>
+			   <div class="panel-body">
+                    <form #f="ngForm">
+                    <p-messages [(value)]="msgs"></p-messages>
+                  	      <div class="row">
+		                       <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2" style="width: 225px;">
+		                       <label for="empList" class="control-label">Employee Name:</label>
+	                           <br>
+	                           <!-- <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"> -->
+                               <p-dropdown  [options]="result" [(ngModel)]="employeeName"  name="employeeName" [style]="{'width':'100%'}" value="empName"></p-dropdown>{{result}}	
+                               </div>
+                       	</div><br>
+
+                         <div class="row">
+ 						<div class="form-group col-lg-2">
+        							<b>From</b>
+       								<p-calendar name="fdate" [(ngModel)]="fdate" value="fromDate" [showIcon]="true"></p-calendar>
+    					</div>
+					    <div class="form-group col-lg-1" style="position:  relative;left: 62px;">
+				        			<b>To</b>
+				        			<p-calendar name="todate" [(ngModel)]="todate" value="toDate" [showIcon]="true"></p-calendar>
+				    	</div>
+	                     </div>
+
+					<div class="row">
+						<div class="form-group col-lg-6">
+							<br>
+							<button type="submit" class="btn btn-success" (click)="submitempdetails(f.value);Onclick($event)" routerLinkActive="active">Submit</button>
+							&nbsp;&nbsp;&nbsp; <input type="reset" value="Clear"
+								class="btn btn-warning" (click)="clear()" />
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+
+	<div class="container" *ngIf="showReport">
+		
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Time Report </b>
+				    </h3>					
+				</div>
+
+				<div class="row excel">
+					<div class="form-group col-lg-6">
+					
+					
+						<button type="excel" class="btn btn-success"  (click)="dt.exportCSV()">Excel</button>
+					</div>
+				</div>
+
+
+				<div class="panel-body">
+					<div id="timereport">
+                       <p-dataTable #dt [value]="timeReport" [rows]="10" [paginator]="true" exportFilename="TimeReport"
+							[responsive]="true" dragdrop="true"
+							[headerCheckboxToggleAllPages]="true" dataKey="id"
+							[rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true"
+							[reorderableColumns]="true" 
+							[loading]="loading"  id="timereport" [style]="{'overflow': 'visible'}" >
+							<p-header>
+        <div style="text-align:left">
+            <p-multiSelect [options]="cities" [(ngModel)]="selectedCities" (onChange)="selecteddisplay()" appendTo="body"></p-multiSelect>
+        </div>
+    </p-header>
+     <p-column *ngFor="let col of selectedVisibleClaimColumn" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column> 
+    
+					   <!--  <p-column field="employeeId" header="Employee Id" [sortable]="true"></p-column> 
+						<p-column field="employeeName" header=" Employee Name" [sortable]="true"></p-column>
+						<p-column field="applicationName" header="Application" [sortable]="true"></p-column> 
+						<p-column field="inTime" header="In Time" [sortable]="true"></p-column> 
+						<p-column field="outTime" header="Out Time" [sortable]="true"></p-column> 
+						<p-column field="difference" header="Total Timing" [sortable]="true"></p-column>
+						<p-column field="date" header="Date" [sortable]="true"></p-column> -->
+						</p-dataTable>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+

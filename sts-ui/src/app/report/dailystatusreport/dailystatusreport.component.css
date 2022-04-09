@@ -1,0 +1,26 @@
+.report
+{
+
+    margin-left: 17px;
+    	position:relative;
+	bottom:18px;
+}
+
+.notreported
+{
+	width:20%;
+	position:relative;
+	bottom:20px;
+}
+.ui-multiselect-panel {
+	 
+    padding: 0.2em;
+    position: absolute;
+    min-width: 12em;
+    display: block;
+    z-index: 1001 !important;
+    visibility: visible !important;
+    top: 587px !important;
+    left: 140.5px !important;
+    opacity: 1 !important;
+} 

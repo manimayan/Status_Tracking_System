@@ -1,0 +1,33 @@
+
+h3 {
+  margin: 0 0 10px;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+.name {        /* this will hide div with id div_id_name */
+  display:none;
+}
+.plan
+{
+	font-size:18px;
+	margin-bottom: 6px;
+	
+    
+}
+
+a
+{
+	color: #fff;
+    text-decoration: none;
+}
+.report
+{
+float: left;
+    width: 100%;
+    
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

@@ -1,0 +1,19 @@
+.margin{
+	margin-left:1px;
+	margin-right:1px;
+}
+ 
+.dynamic_dropdown{
+	width:254px;
+	position:relative;
+	height:33px;
+	border-radius:4px;
+} 
+ 
+.scroll{
+	 overflow-y: scroll;
+	 resize: none;
+	    
+} 
+ 
+ 

@@ -1,0 +1,52 @@
+   .background-occupy {
+	background: #354143;
+	background: -webkit-linear-gradient(to left, #354143, #7c999d);
+	background: linear-gradient(to left, #354143, #7c999d);
+    width: 100%;
+ 
+}   
+
+#o
+{
+	
+	background:beige; 
+	border-top-right-radius:10px;
+	border-top-left-radius:10px;
+	color: #8a6d3b;
+	marign-top:0px;
+	margin-bottom: 0px ;
+	padding-bottom:10px;	
+	font-size: 16px;
+    color: inherit;
+    padding-left: 10px;
+    padding-top: 10px;
+    
+} 
+
+ .menu-pad
+{
+	    padding-right: 8%;
+	    margin-left: 50px; 
+} 
+.background
+{
+	background: #354143 ! important;
+    background: -webkit-linear-gradient(to left, #354143, #7c999d) ! important;
+    background: linear-gradient(to left, #354143, #7c999d) ! important;
+   overflow: hidden; 
+   padding-top:6%;
+
+}
+
+.panel-heading {
+
+    border: none;
+}
+
+.panel-custom
+{
+	 background: white; 
+	 padding-left: 23px;
+	 border-bottom-left-radius: 10px;
+	 border-bottom-right-radius: 10px;
+}

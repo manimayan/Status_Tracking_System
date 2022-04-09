@@ -1,0 +1,121 @@
+<div class="container-fluid">
+       <div class="container">
+                     <div class="panel panel-warning">
+                           <div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+                                  <h3 class="panel-title text-center">
+                                         <b> Upload Ticket </b> </h3>   
+                           </div>
+                           <div class="panel-body">
+         <p-messages [(value)]="errorMsg"></p-messages>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+      <div class="upload">
+        <div class="row">
+          <div class="col-md-4">
+
+            <button (click)="displayType()" class="imgbtn" class="btn btn-success"    style="height: 34px;">
+                <label for="file-input" style="margin-top: 2px">
+                  <span class="text">Browse</span>
+                </label>
+              </button>
+             <input [(ngModel)]="inputfile" class="block" #fileInput id="file-input" type="file" accept=".xlsx" required style="display: none" (change)="fileEvent($event)"  /> &nbsp;&nbsp;&nbsp;
+          <a class="imgbtn" class="btn btn-success"  href="assets/STS_Ticket_Sample.xlsx" > <span class="text" style="font-weight: bold">Download Template</span></a>
+        </div>
+        </div></div>
+
+       <div *ngIf="display">
+        <div class="row">
+          <div class="col-md-4"><br>
+            <span class="form-control"><b>Selected file: </b>{{fileName}}</span>
+          </div>    <br>    
+<button  id="myfileupload" type="submit" class="btn btn-success imgbtn" [disabled]="updated"  (click)="submit()"  enctype='multipart/form-data' method="POST">Upload</button>      
+
+ </div>
+
+      </div>
+
+      <br>
+
+      <div *ngIf="displaySuccessmessage">
+
+        <div class="row">
+
+          <div class="col-md-4 "></div>
+
+          <div class="col-md-2 ">
+
+            <span class="form-control" style="background: #8de98d; opacity: 0.5;">{{message}}</span>
+
+          </div>
+
+          <div>
+
+            <div class="col-md-3 ">
+
+              <button class="btn" [hidden]="showViewButton" (click)="okClick()" style="background-color: #ccc;height:40px">
+
+                                     OK <img src="assets/img/okay-icon.png">
+
+</button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <br>
+
+     
+
+      <br>
+
+      <div *ngIf="displayFileNameError">
+
+        <div class="row">
+
+          <div class="col-md-4 "></div>
+
+          <div class="col-md-2 ">
+
+            <span class="form-control" style="background: rgba(247, 45, 45, 0.18); color:red;">Upload Failed</span>
+
+          </div>
+
+          <div class="col-md-2 " style="margin-left: -30px;width: 400px;">
+
+            <span class="form-control" style="background-color:#f7f7f7">{{message}}</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+   <!--  </div> -->
+
+                           </div>
+
+                    
+
+              </div>
+
+       </div>
+
+       </div>
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+

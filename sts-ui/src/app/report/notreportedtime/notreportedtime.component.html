@@ -1,0 +1,54 @@
+<div class="container-fluid">
+<div class="container">
+	 <div class="panel panel-warning">
+		  <div class="panel-heading">
+		  <h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					
+					
+					
+					
+					<h3 class="panel-title text-center">
+						<b> Today's Not Reported </b>
+					</h3>
+		  </div>
+		  <div class="row excel">
+					<div class="form-group col-lg-6">
+					
+					
+						<button type="excel" class="btn btn-success"  (click)="dt.exportCSV()">Excel</button>
+					</div>
+				</div>
+			   <div class="panel-body">
+   
+	<div class="notreportedabsence">
+	 <p-dataTable  [value]="notreportedabsence" [rows]="10"  [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" [headerCheckboxToggleAllPages]="true" [resizableColumns]="true" [reorderableColumns]="true"
+				[loading]="loading" #dt  exportFilename="OnLeave">
+	<p-column header="On Leave" field="employeeName" [filter]="true" [sortable]="true"></p-column>
+	</p-dataTable>
+	<br>
+	</div>
+	<div class="row excel">
+					<div class="form-group col-lg-6">
+					
+					
+						<button type="excel" class="btn btn-success"  (click)="dt1.exportCSV()">Excel</button>
+					</div>
+				</div>
+				<div id="nottimeReport">
+	 <p-dataTable  [value]="nottimeReport"  [rows]="10"  [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" [headerCheckboxToggleAllPages]="true" [resizableColumns]="true" [reorderableColumns]="true"
+				exportFilename="NotReportTime" [loading]="loading" #dt1 exportFilename="NotTimeReported">
+	<p-column header="Employee ID" field="employeeId" [filter]="true" [sortable]="true"></p-column>
+	<p-column header="Employee Name" field="employeeName" [filter]="true" [sortable]="true"></p-column>
+	<p-column header="In time" field="inTime" [filter]="true" [sortable]="true"></p-column>
+	<p-column header="Out time" field="outTime" [filter]="true" [sortable]="true"></p-column>
+	</p-dataTable>
+	
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>

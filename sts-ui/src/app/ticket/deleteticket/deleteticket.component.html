@@ -1,0 +1,62 @@
+<div class="container-fluid">
+<div class="container">
+
+	 <div class="panel panel-warning">
+		  <div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+ 
+<h3 class="panel-title text-center">
+ 
+<b> Tickets List </b>
+ 
+</h3>
+ 
+</div>
+<div class="panel-body">
+ <div class="panel-heading">
+				
+				
+ <div>
+<p-dataTable [value]="deleted" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+ 
+[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+ 
+[loading]="loading" [style]="{'overflow': 'visible'}">
+ 
+
+ 	<p-column field="ticketId" header="Ticket Id" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column> 
+ 	<p-column field="ticketDescription" header="Ticket Description" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column> 
+ 
+ 
+ 	<p-column field="applicationName" header="Application" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column> 
+ 
+ <p-column >
+        <ng-template  pTemplate="header">  
+        </ng-template>
+        <ng-template let-col let-data="rowData" pTemplate="body">
+            <button style="position:relative; margin-left: 42%;" type="button" class="btn btn-success"   (click)="deleteTick(data)" >Delete</button>
+        </ng-template>
+    </p-column>  
+ 
+
+
+
+
+ 
+</p-dataTable>
+ </div>
+</div>
+</div>
+ 
+ 
+
+ 
+</div>
+ 
+ 
+</div>
+</div>
+

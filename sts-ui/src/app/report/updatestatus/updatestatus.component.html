@@ -1,0 +1,120 @@
+<div class="container-fluid">
+  <div class="container">
+   
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+                 <h3 class="panel-title text-center"><b> Update Ticket Status </b></h3>
+            </div>
+    <div class="panel-body">
+        <form class="form-group" name="updateticket" id="updateticket"  #f="ngForm" >
+                 <div align="Center"> <span class="message" style="color: red"></span> </div>
+                 <div align="Center"><span class="message" style="color: red"></span> </div>
+                   <p-messages [(value)]="msgs"></p-messages>
+                 <div class="row">
+             <div class="form-group col-lg-3">
+                 <b>Ticket Id</b> <label for="ticketId" class="control-label">: </label> 
+		         <input type="text" class="form-control" name="ticketId" [(ngModel)]="ticketId"  id="select" value="" readonly>
+						<!-- <input type="text" class="form-control" name="ticketId" [(ngModel)]="ticketId"  id="select" value=""  readonly > -->
+             </div>
+             <div class="form-group col-lg-3">
+                 <b>Ticket Type</b> <label   for="ticketType" class="control-label"><sup   style="color: red;">*</sup>: </label> 
+	             <p-dropdown [options]="type" field="ticketType" name="ticketType" [(ngModel)]="ticketType" id="name1" value=" " #name1="ngModel" placeholder="Select the TicketType" [style]="{'width':'100%'}" ></p-dropdown> 
+            <div *ngIf="name1.invalid && (name1.dirty || name1.touched)" class="alert alert-danger">
+                                    <div *ngIf="name1.errors.required">TicketType is required.
+ 										 </div></div> 
+             </div>
+             <div class="form-group col-lg-3">
+                 <b>Description</b> <label    for="ticketDescription" class="control-label">: </label> 
+	             <input type="text"  class="form-control" name="ticketDescription" [(ngModel)]="ticketDescription" id="select2"  value=""  readonly>
+              </div>
+            
+              
+              <div class="form-group col-lg-3">
+                 <b>Application</b> <label for="application" class="control-label">
+                 <sup style="color: red;">*</sup>: </label> 
+		         <input type="text" class="form-control" name="applicationName" [(ngModel)]="applicationName"   value="" readonly>
+			</div>
+			
+              </div>
+              
+              <div class="row">
+              <div class="form-group col-lg-3">
+                <b>Priority</b> <label required for="priority" class="control-label"><sup style="color: red;">*</sup>: </label> 
+               <p-dropdown [options]="prio" field="priority" name="priority" [(ngModel)]="priority" placeholder="Select the Priority" [style]="{'width':'100%'}" ></p-dropdown> 
+            </div>
+            <div class="form-group col-lg-3">
+               <b>Activity</b> <label required for="activity" class="control-label"><sup style="color: red;">*</sup>:</label> 
+                     <!-- <select class="form-control" name="activity" id="select5" required>
+                            <option value=""></option>
+                            <option label="Analysis">Analysis</option>
+                            <option label="Build">Build</option>
+                            <option label="Deployment">Deployment</option>
+                            <option label="Design">Design</option>
+                            <option label="Documentation">Documentation</option>
+                            <option label="Estimation">Estimation</option>
+                            <option label="Testing">Testing</option>
+                            <option label="UAT">UAT</option>
+                      </select> -->
+               <p-dropdown  [options]="act" field="activity" name="activity" [(ngModel)]="activity" placeholder="Select the Activity" [style]="{'width':'100%'}" ></p-dropdown> 
+                      
+            </div>
+             <div class="form-group col-lg-3">
+             <b>Status</b> <label required for="status" class="control-label"><sup style="color: red;">*</sup>:</label>
+             <p-dropdown  [options]="stat" field="status" name="status" [(ngModel)]="status" placeholder="Select the Status" [style]="{'width':'100%'}" ></p-dropdown> 
+             </div> 
+          <!--  <div class="form-group col-lg-3">
+                <b>Tester</b> <label for="tester" class="control-label"></label>
+                        <select class="form-control" name="tester" id="select7">
+                            <option value=""></option>
+                            <option label="Kanmani" >Kanmani</option>
+                       </select>
+                 <p-dropdown   [options]="display" field="tester" [(ngModel)]="tester"  name="tester" [(ngModel)]="tester"  [style]="{'width':'100%'}" ></p-dropdown>{{result}}
+           </div> -->
+           <div class="form-group col-lg-3">
+                 <b>Tester</b> <label   for="tester" class="control-label">: </label> 
+	           <div class="form-group">
+              <select class="col-lg-3 control-label dynamic_dropdown" [(ngModel)]="testerName"  name="testerName">
+              <option *ngFor="let testName of display" [ngValue]="testName.value">{{testName.value}}</option>
+              </select> 
+              </div> 
+              </div> 
+           </div>
+           
+           <div class="row">
+           <div class="form-group col-lg-3">
+                <b>Dev Comment</b> <label for="devComment"><sup style="color: red;">*</sup>: </label>
+                <textarea class="form-control scroll" name="devComment" id="select8" [(ngModel)]="devComment" maxlength="150" required></textarea>
+                <div id="textarea_feedback"></div>
+           </div>
+           <div class="form-group col-lg-3">
+               <b> Worked Today</b> <label for="radio"><b><sup style="color: red;">*</sup>: </b></label> <br>
+               <label class="radio-inline"> <input type="radio" name="workedOnToday" id="work" value="Yes" [(ngModel)]="Yes" required>Yes</label>
+               <label class="radio-inline"> <input type="radio" name="workedOnToday" id="work" value="No" [(ngModel)]="No"  onclick="return Validate()" required>No</label> 
+               <label for="workedOnToday" class="error" style="display: none;">*Please pick an option above</label>
+           </div>
+           <div class="form-group col-lg-6">
+           <div align="center"></div>
+               <br>
+               <button type="submit" class="btn btn-success" (click)="saveticketdetails(f.value) "[disabled]="!f.form.valid">Save</button>&nbsp;&nbsp;&nbsp; 
+                <input type="button" value="Clear" name="fclear"class="btn btn-warning"(click)="fClear()" />
+          
+
+       
+    </div> </div>
+          
+        </form>
+     </div>
+   </div>
+  </div>
+ </div>
+
+
+
+
+
+
+	

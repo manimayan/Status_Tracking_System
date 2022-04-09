@@ -1,0 +1,47 @@
+<div class="container-fluid">
+	<div class="container">
+			<div class="panel panel-warning">
+		
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Reassign Ticket </b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<p-messages [(value)]="msgs"></p-messages>
+					<div>
+					
+					
+					<div style="text-align:left">
+           
+			    		
+			    		
+			    		 <p-dataTable #dt [value]="reassignList" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+						[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true" [style]="{'overflow': 'visible'}" 
+						[loading]="loading">
+						<p-column field="ticketId" header="Ticket Id" [filter]="true" filterMatchMode="contains" [sortable]="true" ></p-column>
+						<p-column field="ticketDescription" header="Ticket Description" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+						<p-column field="employeeName" header="Assigned To" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+						<p-column  header="Re Assign" [style]="{'overflow': 'visible'}" >
+				           <ng-template let-reassignData="rowData" pTemplate="body"> 
+								<p-dropdown [options]="result" [style]="{'width':'100%'}" placeholder="Select a Employee Name" name="e_name" [(ngModel)]="reassignData.e_name" >
+								</p-dropdown>                           
+							</ng-template> 
+                  		</p-column> 
+       					<p-column >
+        					<ng-template pTemplate="header">Assign</ng-template>
+        					<ng-template let-col let-data="rowData" pTemplate="body"> 
+            					<button style="position:relative; left: 54px;" type="button" class="form-group btn btn-success col-xs-6 col-md-6 col-centered" (click)="ReassignUpdate(data)" >Reassign</button>
+        					</ng-template>
+    					</p-column>
+    					</p-dataTable> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+

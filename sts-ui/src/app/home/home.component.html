@@ -1,0 +1,158 @@
+<div class="container-fluid">
+
+	<div *ngIf="nav.hiding" class="container"> 
+	
+			<div class="panel panel-warning" >
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Ticket Details </b>
+					</h3>
+				</div>
+				<div class="panel-body">
+			<p-dataTable  [value]="clarifyList" [rows]="10" [paginator]="true" appendTo="body" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[style]="{'overflow': 'visible'}" [loading]="loading" >
+				
+				<p-column field="ticketId"  header="Ticket Id" [editable]="true" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="ticketType" header="Ticket Type" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="employeeName" header="Employee Name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="ticketDescription" header="Description" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="applicationName" header="Application Name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="status" header="Status" [editable]="true" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  field="clarificationDescription" header="Supervisor Comment" [editable]="true" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+				<p-column  [editable]="true" field="employeeResponse"  [editable]="true" [filter]="true" filterMatchMode="contains" [sortable]="true">
+				<ng-template pTemplate="header">Response</ng-template>
+	 		     <ng-template let-col let-resp="rowData" pTemplate="body" field="employeeResponse"> 
+				 <input type="text" [(ngModel)]="resp[col.field]" autoResize="autoResize"  />
+				 </ng-template> 
+				</p-column>
+				<p-column  header="Update">	
+				<ng-template let-row let-data="rowData" pTemplate="body">
+					<button type="button" class="btn btn-success doc"  pButton (click)="updateresponse(data.ticketId,data.clarificationDescription,data.employeeResponse)">Update</button></ng-template>
+				</p-column>  
+			</p-dataTable>
+		
+		
+		
+				
+				
+				</div>	
+				
+			</div>
+	
+	</div> 
+			
+  
+  
+	<div  class="container" >
+	
+			<div class="panel panel-warning" >
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b> Ticket information </b>
+					</h3>
+				</div>
+				
+			<div class="panel-body">
+	
+			<p-dataTable [value]="homeList" [rows]="10" [paginator]="true" [(selection)]="selectedEModel" [responsive]="true" dragdrop="true" 
+				[headerCheckboxToggleAllPages]="true" dataKey="id" [rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true" [reorderableColumns]="true"
+				[style]="{'overflow': 'visible'}" [loading]="loading" >
+			
+				<p-column header="Ticket Id" [sortable]="true" field="ticketId"  [filter]="true" ></p-column>
+				<p-column  header="Ticket Type" [sortable]="true" field="ticketType"  [filter]="true" filterMatchMode="contains" [styleClass]="wrap" ></p-column>
+				<p-column  header="Description" [sortable]="true" field="ticketDescription"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Application"  [sortable]="true" field="applicationName"  [filter]="true" filterMatchMode="contains" ></p-column>
+				<p-column  header="Priority" [sortable]="true" field="priority"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Activity"  [sortable]="true" field="activity"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header=" Status"  [sortable]="true" field="status"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Dev Comment"  [sortable]="true" field="devComment"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Tester"  [sortable]="true" field="tester"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Start Date" [sortable]="true" field="startDate"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column  header="Tester Comments" [sortable]="true" field="testComment"  [filter]="true" filterMatchMode="contains"></p-column>
+				<p-column header="Update">
+        <ng-template let-row let-data="rowData" pTemplate="body">
+            <button type="button" class="btn btn-success"  pButton (click)="updatecomment(data)">Update</button>
+        </ng-template>
+    </p-column>  
+			</p-dataTable>
+		</div>
+				
+			
+		</div>
+	</div>
+	
+	<div class="container">
+
+			<div class="panel panel-warning">
+			
+				<div class="panel-heading">
+					<h4 class="panel-title text-right">
+						<small> <b>Ticket dump by {{createdBy}} 
+						on {{createdOn}} </b> </small>
+					</h4>
+					<h3 class="panel-title text-center">
+						<b>Documentation</b>
+					</h3>
+				</div>
+			<div class="panel-body">
+					<div id="viewdoc">
+		<p-dataTable #id [value]="homedocList" [rows]="10" [paginator]="true"
+		 [responsive]="true"
+			dragdrop="true" [headerCheckboxToggleAllPages]="true" dataKey="id"
+			[rowsPerPageOptions]="[10,25,50,100]" [resizableColumns]="true"
+			[reorderableColumns]="true" [style]="{'overflow': 'visible'}" [loading]="loading"> 
+			<p-column field="ticketId" header="Ticket Id" [filter]="true" filterMatchMode="contains" 
+			[sortable]="true" >
+			</p-column>
+			 <p-column field="ticketType" header="Ticket Type"
+			[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+			 <p-column field="ticketDescription" header="Description"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="applicationName" header="Application"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="status" header="Status"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="documentationComment" header="Dev Comments"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="remedy" header="Remedy"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 	 <p-column field="documentationDescription" header="Documentation"
+		 	[filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+		 
+				<p-column header="Update">
+       				 <ng-template let-row let-data="rowData" pTemplate="body">
+           			 <button type="button" class="btn btn-success doc"  pButton (click)="update(data,data,data,data)">Update</button>
+       					</ng-template>
+   				 </p-column>  
+ 
+
+				</p-dataTable>
+				</div>
+				</div>
+			</div>
+		
+	</div>		
+	
+	
+	
+	
+</div>
+
+ 
+			
+
+
+
+				
+					
+
+
